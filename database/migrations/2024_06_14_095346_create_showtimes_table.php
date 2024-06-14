@@ -15,6 +15,7 @@ class CreateShowtimesTable extends Migration
             $table->id();
             $table->foreignId('film_id')->constrained()->onDelete('cascade');
             $table->dateTime('start_time');
+            $table->integer('remaining_seats')->default(30);
             $table->timestamps();
         });
     }

@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model; // Import Model class
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Booking extends Model
 {
     use HasFactory;

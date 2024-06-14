@@ -16,8 +16,8 @@ class Film extends Model
         return $this->hasMany(Showtime::class);
     }
 
-    public function theaters()
+    public function cinema()
     {
-        return $this->belongsToMany(Theater::class, 'film_theater');
+        return $this->belongsTo(Theater::class, 'film_theater');
     }
 }

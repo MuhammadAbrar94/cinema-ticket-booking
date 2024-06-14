@@ -11,12 +11,19 @@ use App\Models\Cinema;
 
 class CinemaController extends Controller
 {
-    public function show(Request $request): Response
+    public function show(Request $request)
     {
         $cinema = Cinema::with('theaters.films.showTimes')->find($request->id);
-        dd($cinema);
-        return Inertia::render('Welcome', [
-            'cinema' => $cinema
+        $cinemaArray = $cinema->toArray();
+        $user = Auth::user();
+        if (!$cinema) {
+            abort(404, 'Cinema not found');
+        }
+        return Inertia::render('TheaterFilms/TheaterFilms', [
+            'auth' => [
+                'user' => $user
+            ],  
+            'cinema' => $cinema,
         ]);
     }
 
